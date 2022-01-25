@@ -14,13 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         let bridge: RCTBridge = RCTBridge.init(delegate: self, launchOptions: nil)
-        let rootView: RCTRootView = RCTRootView.init(bridge: bridge, moduleName: "rnfromscratch", initialProperties: nil)
-        
-//        if #available(iOS 13.0, *) {
-//            rootView.backgroundColor = .systemBackground
-//        } else {
-//            rootView.backgroundColor = .white
-//        }
+        let rootView: RCTRootView = RCTRootView(bridge: bridge, moduleName: "rnfromscratch", initialProperties: nil)
         
         self.window = UIWindow.init()
         
@@ -36,8 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate: RCTBridgeDelegate {
     func sourceURL(for bridge: RCTBridge!) -> URL! {
         #if DEBUG
-//        return RCTBundleURLProvider.jsBundleURL(forBundleRoot: "index", packagerHost: "localhost", enableDev: true, enableMinification: false)
-        return URL(string: "http://localhost:8081/index.bundle?platform=ios")
+        return RCTBundleURLProvider.jsBundleURL(forBundleRoot: "index", packagerHost: "localhost", enableDev: true, enableMinification: false)
         #else
         return Bundle.main.url(forResource: "main", withExtension: "jsbundle")
         #endif
