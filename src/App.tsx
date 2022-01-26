@@ -1,15 +1,15 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, View, ViewStyle } from "react-native";
 
-const style = {
+const style: ViewStyle = {
   alignItems: "center",
   justifyContent: "center",
   backgroundColor: "#F5FCFF",
   flex: 1,
 };
 
-const App = () => (
-  <View style={style}>
+const App: React.FC = () => (
+  <View {...{ style }}>
     <Text>Hello World!!!</Text>
   </View>
 );
